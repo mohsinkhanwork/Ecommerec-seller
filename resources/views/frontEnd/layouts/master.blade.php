@@ -18,6 +18,8 @@
     <script src="{{asset('frontEnd/js/respond.min.js')}}"></script>
     <![endif]-->
     <link rel="stylesheet" href="{{asset('easyzoom/css/easyzoom.css')}}" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
 </head><!--/head-->
 
 <body>

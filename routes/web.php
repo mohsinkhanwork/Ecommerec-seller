@@ -64,6 +64,10 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function (){
     Route::get('/check_category_name','CategoryController@checkCateName');
     /// Products Area
     Route::resource('/product','ProductsController');
+    Route::get('/add/country','ProductsController@add_country')->name('country.create');
+    Route::post('/store/country','ProductsController@store_country')->name('country.store');
+    Route::get('/all/country','ProductsController@all_countries')->name('country.index');
+
     Route::get('delete-product/{id}','ProductsController@destroy');
     Route::get('delete-image/{id}','ProductsController@deleteImage');
     /// Product Attribute

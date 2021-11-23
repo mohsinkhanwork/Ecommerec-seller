@@ -20,6 +20,13 @@ sidebar-menu-->
                 <li><a href="{{route('coupon.index')}}">List Coupons</a></li>
             </ul>
         </li>
+        <li class="submenu {{$menu_active==5? ' active':''}}"> <a href="#"><i class="icon icon-th-list"></i> <span>Countries</span></a>
+            <ul>
+                <li><a href="{{ route('country.create') }}">Add New Country</a></li>
+                <li><a href="{{ route('country.index') }}">List Countries</a></li>
+            </ul>
+        </li>
+
     </ul>
 </div>
 <!--sidebar-menu

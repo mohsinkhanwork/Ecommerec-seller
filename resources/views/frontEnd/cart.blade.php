@@ -50,7 +50,7 @@
                                     </div>
                                 </td>
                                 <td class="cart_total">
-                                    <p class="cart_total_price">$ {{$cart_data->price*$cart_data->quantity}}</p>
+                                    <p class="cart_total_price"> $ {{$cart_data->price*$cart_data->quantity}}</p>
                                 </td>
                                 <td class="cart_delete">
                                     <a class="cart_quantity_delete" href="{{url('/cart/deleteItem',$cart_data->id)}}"><i class="fa fa-times"></i></a>

@@ -47,7 +47,9 @@
                                 <a href="javascript:" rel="{{$product->id}}" rel1="delete-product" class="btn btn-danger btn-mini deleteRecord">Delete</a>
                             </td>
                         </tr>
-                        {{--Pop Up Model for View Product--}}
+
+
+                        {{--Pop Up Model for View Product and pass modal id--}}
                         <div id="myModal{{$product->id}}" class="modal hide">
                             <div class="modal-header">
                                 <button data-dismiss="modal" class="close" type="button">×</button>
@@ -55,10 +57,12 @@
                             </div>
                             <div class="modal-body">
                                 <div class="text-center"><img src="{{url('products/small',$product->image)}}" width="100" alt="{{$product->p_code}}"></div>
+                                <br>
                                 <p class="text-center">{{$product->description}}</p>
                             </div>
                         </div>
                         {{--Pop Up Model for View Product--}}
+                    
                     @endforeach
                     </tbody>
                 </table>

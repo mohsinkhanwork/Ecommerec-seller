@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Category_model;
 use App\Products_model;
+use App\Country;
 use Illuminate\Support\Facades\Storage;
 use Image;
 use Illuminate\Http\Request;
+use Response;
 
 class ProductsController extends Controller
 {
@@ -34,6 +36,36 @@ class ProductsController extends Controller
         $categories=Category_model::where('parent_id',0)->pluck('name','id')->all();
         // dd($categories);
         return view('backEnd.products.create',compact('menu_active','categories'));
+    }
+
+    public function add_country()
+    {
+        $menu_active=5;
+        
+        return view('backEnd.countries.create',compact('menu_active'));
+        
+    }
+
+    public function store_country(Request $request)
+    {
+        
+        $input = $request->all();
+
+        Country::create($input);
+
+        return response()->json();
+
+        
+    }
+
+    public function all_countries()
+    {
+        
+        $countries = Country::all();
+        $menu_active=5;
+        return view('backEnd.countries.index', compact('countries', 'menu_active'));
+
+        
     }
 
     /**
@@ -67,6 +99,7 @@ class ProductsController extends Controller
                 $formInput['image']=$fileName;
             }
         }
+
         Products_model::create($formInput);
         return redirect()->route('product.create')->with('message','Add Products Successfully!');
     }
