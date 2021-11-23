@@ -61,8 +61,8 @@ class ProductsController extends Controller
     public function all_countries()
     {
         
-        $countries = Country::all();
         $menu_active=5;
+        $countries = Country::all();
         return view('backEnd.countries.index', compact('countries', 'menu_active'));
 
         

@@ -66,7 +66,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function (){
     Route::resource('/product','ProductsController');
     Route::get('/add/country','ProductsController@add_country')->name('country.create');
     Route::post('/store/country','ProductsController@store_country')->name('country.store');
-    Route::get('/all/country','ProductsController@all_countries')->name('country.index');
+    Route::get('/all/countries','ProductsController@all_countries')->name('country.index');
 
     Route::get('delete-product/{id}','ProductsController@destroy');
     Route::get('delete-image/{id}','ProductsController@deleteImage');

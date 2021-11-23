@@ -2,7 +2,7 @@
 @section('title','Add Country')
 @section('content')
  
-    {{-- <div id="breadcrumb"> <a href="{{url('/admin')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{route('country.index')}}">Products</a> <a href="{{route('country.create')}}" class="current">Add New Country</a> </div> --}}
+    <div id="breadcrumb"> <a href="{{url('/admin')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home </a> <a href="{{route('country.index')}}">Countries</a> <a href="{{route('country.create')}}" class="current">Add New Country</a> </div>
     <div class="container-fluid">
         @if(Session::has('message'))
             <div class="alert alert-success text-center" role="alert">
@@ -67,7 +67,7 @@ $(document).ready(function(){
                     "country_name": country_name,
                     "country_code": country_code,
                 },
-                 asdasdjkhasjdhjkahsdjkhjkashdjkh
+
                 success: function(data) {
                     
                  alert('success');
@@ -100,5 +100,4 @@ $(document).ready(function(){
     <script src="{{asset('js/wysihtml5-0.3.0.js')}}"></script>
     <script src="{{asset('js/jquery.peity.min.js')}}"></script>
     <script src="{{asset('js/bootstrap-wysihtml5.js')}}"></script>
-    
 @endsection
