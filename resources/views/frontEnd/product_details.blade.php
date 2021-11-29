@@ -1,5 +1,5 @@
 @extends('frontEnd.layouts.master')
-@section('title','Detial Page')
+@section('title','Detaill Page')
 @section('slider')
 @endsection
 @section('content')
@@ -14,7 +14,8 @@
                         {{Session::get('message')}}
                     </div>
                 @endif
-        <div class="product-details"><!--product-details-->
+        <div class="product-details">
+            <!--product-details-->
 
             <div class="col-sm-5">
                 <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
@@ -41,10 +42,11 @@
                     <input type="hidden" name="product_code" value="{{$detail_product->p_code}}">
                     <input type="hidden" name="product_color" value="{{$detail_product->p_color}}">
                     <input type="hidden" name="price" value="{{$detail_product->price}}" id="dynamicPriceInput">
-                    <div class="product-information"><!--/product-information-->
+                    <div class="product-information">
+                        <!--/product-information-->
                         <img src="{{asset('frontEnd/images/product-details/new.jpg')}}" class="newarrival" alt="" />
-                        <h2>{{$detail_product->p_name}}</h2>
-                        <p>Code ID: {{$detail_product->p_code}}</p>
+                        <h2>Product Name: {{$detail_product->p_name}}</h2>
+                        <p>Product Code: {{$detail_product->p_code}}</p>
                         <span>
                             <select name="size" id="idSize" class="form-control">
                         	<option value="">Select Size</option>
@@ -64,20 +66,23 @@
                             </button>
                             @endif
                         </span>
-                        <p><b>Availability:</b>
+                        <p><b> Availability: </b>
                             @if($totalStock>0)
-                                <span id="availableStock">In Stock</span>
+                                <span id="availableStock"> In Stock</span>
                             @else
-                                <span id="availableStock">Out of Stock</span>
+                                <span id="availableStock"> Out of Stock</span>
                             @endif
                         </p>
-                        <p><b>Condition:</b> New</p>
-                        <a href=""><img src="{{asset('frontEnd/images/product-details/share.png')}}" class="share img-responsive"  alt="" /></a>
-                    </div><!--/product-information-->
+                        <p><b>Condition: </b> New</p>
+                        <a href="#"><img src="{{asset('frontEnd/images/product-details/share.png')}}" class="share img-responsive"  alt="" /></a>
+                    </div>
+                    <!--/product-information-->
                 </form>
 
             </div>
-        </div><!--/product-details-->
+        </div>
+
+        <!--/product-details-->
 
         <div class="category-tab shop-details-tab"><!--category-tab-->
             <div class="col-sm-12">
@@ -153,24 +158,75 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                         <p><b>Write Your Review</b></p>
 
-                        <form action="#">
+                       
+                        <form id="product_reviews_stars" method="POST" enctype="multipart/form-data">
+                            @csrf 
+                            {{ csrf_field() }}
 										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
+                                            <input type="hidden" value="{{$detail_product->p_name}}" name="product_name" id="product_name">
+											<input type="text" name="name" id="name" placeholder="Your Name"/ required>
+											<input type="email" name="email" id="email" placeholder="Email Address"/ required>
 										</span>
-                            <textarea name="" ></textarea>
-                            <b>Rating: </b> <img src="{{asset('frontEnd/images/product-details/rating.png')}}" alt="" />
-                            <button type="button" class="btn btn-default pull-right">
+                            <textarea name="comment" id="comment" required></textarea>
+                           
+
+                            {{-- rating system stars --}}
+
+                            <section class='rating-widget'>
+  
+                              <!-- Rating Stars Box -->
+                                <div style="display: flex;">
+
+                                <div class="rating-word">
+                                    <b> Rating: </b> 
+                                </div>
+
+                                <div class='rating-stars'>
+                                    <ul id='stars' style="font-size: 11px;">
+                                      <li class='star' title='Poor' data-value='1'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                      </li>
+                                      <li class='star' title='Fair' data-value='2'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                      </li>
+                                      <li class='star' title='Good' data-value='3'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                      </li>
+                                      <li class='star' title='Excellent' data-value='4'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                      </li>
+                                      <li class='star' title='WOW!!!' data-value='5'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                      </li>
+                                    </ul>
+                                  </div>
+
+                            </div>
+ 
+                              <div class='success-box'>
+                                <div class='clearfix'></div>
+                               
+                                <div class='text-message'></div>
+                                <div class='clearfix'></div>
+                              </div>
+                              
+                            </section>
+
+                            {{-- end rating system stars --}}
+
+                            <button type="submit" class="btn btn-default pull-right">
                                 Submit
                             </button>
                         </form>
+
                     </div>
                 </div>
 
             </div>
         </div><!--/category-tab-->
 
-        <div class="recommended_items"><!--recommended_items-->
+        <div class="recommended_items">
+            <!--recommended_items-->
             <h2 class="title text-center">recommended items</h2>
 
             <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
@@ -203,7 +259,8 @@
                     <i class="fa fa-angle-right"></i>
                 </a>
             </div>
-        </div><!--/recommended_items-->
+        </div>
+        <!--/recommended_items-->
 
     </div>
         </div>

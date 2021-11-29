@@ -33,15 +33,14 @@ class ProductsController extends Controller
     public function create()
     {
         $menu_active=3;
-        $categories=Category_model::where('parent_id',0)->pluck('name','id')->all();
+        $categories = Category_model::where('parent_id',0)->pluck('name','id')->all();
         // dd($categories);
         return view('backEnd.products.create',compact('menu_active','categories'));
     }
 
     public function add_country()
     {
-        $menu_active=5;
-        
+        $menu_active=5;  
         return view('backEnd.countries.create',compact('menu_active'));
         
     }

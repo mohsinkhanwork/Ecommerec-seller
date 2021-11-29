@@ -15,6 +15,11 @@ Route::get('/','IndexController@index');
 Route::get('/list-products','IndexController@shop');
 Route::get('/cat/{id}','IndexController@listByCat')->name('cats');
 Route::get('/product-detail/{id}','IndexController@detialpro');
+
+//review area 
+Route::resource('/product-reviews','ReviewsController');
+Route::post('/product_reviews_store','ReviewsController@rating_reviews')->name('reviews.store');
+
 ////// get Attribute ////////////
 Route::get('/get-product-attr','IndexController@getAttrs');
 ///// Cart Area /////////
@@ -45,8 +50,16 @@ Route::group(['middleware'=>'FrontLogin_middleware'],function (){
 });
 ///
 
+//testing area 
+Route::get('test-page', function() {
+    
+    return view('test');
+});
 
-
+Route::get('test-page-2', function() {
+    
+    return view('test-2');
+});
 
 /* Admin Location */
 Auth::routes(['register'=>false]);
@@ -64,6 +77,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function (){
     Route::get('/check_category_name','CategoryController@checkCateName');
     /// Products Area
     Route::resource('/product','ProductsController');
+
+    //country admin area 
     Route::get('/add/country','ProductsController@add_country')->name('country.create');
     Route::post('/store/country','ProductsController@store_country')->name('country.store');
     Route::get('/all/countries','ProductsController@all_countries')->name('country.index');

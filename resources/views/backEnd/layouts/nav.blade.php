@@ -1,4 +1,4 @@
-sidebar-menu-->
+{{-- sidebar-menu --}}
 <div id="sidebar"><a href="{{url('/admin')}}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
     <ul>
         <li{{$menu_active==1? ' class=active':''}}><a href="{{url('/admin')}}"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>

@@ -20,7 +20,9 @@ class CartController extends Controller
         return view('frontEnd.cart',compact('cart_datas','total_price'));
     }
 
-    public function addToCart(Request $request){
+    public function addToCart(Request $request)
+    
+    {
         $inputToCart=$request->all();
         Session::forget('discount_amount_price');
         Session::forget('coupon_code');
@@ -29,6 +31,7 @@ class CartController extends Controller
         }else{
             $stockAvailable=DB::table('product_att')->select('stock','sku')->where(['products_id'=>$inputToCart['products_id'],
                 'price'=>$inputToCart['price']])->first();
+            // dd($stockAvailable);
             if($stockAvailable->stock>=$inputToCart['quantity']){
                 $inputToCart['user_email']='mkhan9658@gmail.com';
                 $session_id=Session::get('session_id');
@@ -38,22 +41,30 @@ class CartController extends Controller
                 }
                 $inputToCart['session_id']=$session_id;
                 $sizeAtrr=explode("-",$inputToCart['size']);
+                // dd($sizeAtrr);
                 $inputToCart['size']=$sizeAtrr[1];
+                // dd($sizeAtrr[1]);
                 $inputToCart['product_code']=$stockAvailable->sku;
                 $count_duplicateItems=Cart_model::where(['products_id'=>$inputToCart['products_id'],
                     'product_color'=>$inputToCart['product_color'],
                     'size'=>$inputToCart['size']])->count();
                 if($count_duplicateItems>0){
+
                     return back()->with('message','This Item Added already');
+                
                 }else{
+
                     Cart_model::create($inputToCart);
-                    return back()->with('message','Add To Cart Already');
+
+                    return back()->with('message','Added To Cart. Please check your cart');
                 }
             }else{
+
                 return back()->with('message','Stock is not Available!');
             }
         }
     }
+
     public function deleteItem($id=null){
         $delete_item=Cart_model::findOrFail($id);
         Session::forget('discount_amount_price');

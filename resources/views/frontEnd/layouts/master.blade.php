@@ -13,6 +13,7 @@
     <link href="{{asset('frontEnd/css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('frontEnd/css/main.css')}}" rel="stylesheet">
     <link href="{{asset('frontEnd/css/responsive.css')}}" rel="stylesheet">
+    <link href="{{asset('frontEnd/css/stars.css')}}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="{{asset('frontEnd/js/html5shiv.js')}}"></script>
     <script src="{{asset('frontEnd/js/respond.min.js')}}"></script>
@@ -20,6 +21,10 @@
     <link rel="stylesheet" href="{{asset('easyzoom/css/easyzoom.css')}}" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+ <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+ <meta name="csrf-token" content="{{ csrf_token() }}">
 </head><!--/head-->
 
 <body>
@@ -30,6 +35,7 @@
 @yield('content')
 @include('frontEnd.layouts.footer')
 <script src="{{asset('frontEnd/js/jquery.js')}}"></script>
+<script src="{{asset('frontEnd/js/stars.js')}}"></script>
 <script src="{{asset('frontEnd/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('frontEnd/js/jquery.scrollUp.min.js')}}"></script>
 <script src="{{asset('frontEnd/js/price-range.js')}}"></script>
