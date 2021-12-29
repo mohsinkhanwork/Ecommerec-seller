@@ -7,11 +7,17 @@ use App\ImageGallery_model;
 use App\ProductAtrr_model;
 use App\Products_model;
 use Illuminate\Http\Request;
+use App\Review;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
     public function index(){
         $products=Products_model::all();
+        // $products1=Products_model::all()->toArray();
+        // $var = next($products1);
+        // dd($var);
         return view('frontEnd.index',compact('products'));
     }
     public function shop(){
@@ -32,7 +38,15 @@ class IndexController extends Controller
         // dd($totalStock);
         $relateProducts=Products_model::where([['id','!=',$id],['categories_id',$detail_product->categories_id]])->get();
         // dd($relateProducts);
-        return view('frontEnd.product_details',compact('detail_product','imagesGalleries','totalStock','relateProducts'));
+        $User = '';
+        if(Auth()->check()) {
+
+        $User = Review::where('email', Auth()->user()->email)->get();
+        // dd($User);
+
+        }
+
+        return view('frontEnd.product_details',compact('detail_product','imagesGalleries','totalStock','relateProducts', 'User'));
     }
     public function getAttrs(Request $request){
         $all_attrs=$request->all();

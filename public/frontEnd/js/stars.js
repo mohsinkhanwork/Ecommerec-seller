@@ -123,4 +123,8 @@ $(document).ready(function(){
   
 });
 
+// array.forEach( e {
+//   // statements
+// });
+
 

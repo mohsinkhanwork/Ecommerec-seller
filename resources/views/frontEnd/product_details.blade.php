@@ -158,16 +158,21 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                         <p><b>Write Your Review</b></p>
 
-                       
+                    @if (Auth::check())
+                     @if(count($User) > 0 ) 
+
+                    You Have Already Submitted Review for this Product, Thanks. 
+
+                     @else
                         <form id="product_reviews_stars" method="POST" enctype="multipart/form-data">
                             @csrf 
                             {{ csrf_field() }}
 										<span>
                                             <input type="hidden" value="{{$detail_product->p_name}}" name="product_name" id="product_name">
-											<input type="text" name="name" id="name" placeholder="Your Name"/ required>
-											<input type="email" name="email" id="email" placeholder="Email Address"/ required>
+											<input type="text" name="name" id="name" value="{{Auth()->user()->name}}" readonly>
+											<input type="email" name="email" value="{{Auth()->user()->email}}" id="email" readonly>
 										</span>
-                            <textarea name="comment" id="comment" required></textarea>
+                            <textarea name="comment" id="comment" placeholder="Write Your Comment for this product" required></textarea>
                            
 
                             {{-- rating system stars --}}
@@ -218,6 +223,13 @@
                                 Submit
                             </button>
                         </form>
+                         @endif
+                         
+                    @else 
+
+                           Please <a href="{{url('/login_page')}}">login</a> to add review for this product, Thanks.
+
+                    @endif
 
                     </div>
                 </div>

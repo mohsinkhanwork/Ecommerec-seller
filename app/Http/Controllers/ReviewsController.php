@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 use App\Review;
+use Validator;
 use Response;
+use DB;
+
 
 class ReviewsController extends Controller
 {
@@ -37,7 +42,7 @@ class ReviewsController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        dd($input);
+        
         Review::create($input);
 
         return response()->json();
@@ -49,8 +54,31 @@ class ReviewsController extends Controller
         $input = $request->all();
         // dd($input);
         Review::create($input);
+        
+        // $email = $request->email;
+        // // dd($email);
+       
+        // $rated_already_users = Review::where('email', $email)->get();
 
-        return response()->json();
+
+        
+        // foreach($rated_already_users as $users) {
+
+        // // dd($users->email);
+
+        //  if($users->email == $email) {
+
+        //         abort('404');
+
+        // } else {
+
+        // Review::create($input);
+
+        // }   
+
+        // }
+
+        // return response()->json();
         // return redirect()->back()->with('message', 'Thanks for Review');
     }
 
