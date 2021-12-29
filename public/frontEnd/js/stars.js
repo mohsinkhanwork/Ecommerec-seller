@@ -100,10 +100,12 @@ $(document).ready(function(){
                       button: "Ok",
                     }).then((willDelete) => {
 
-                        if (willDelete) {
+                        // if (willDelete) {
 
-                            location.reload();
-                        }
+                        //     location.reload();
+                        // }
+
+                        $('#product_reviews_stars').hide();
 
                     });
 
